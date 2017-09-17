@@ -15,7 +15,7 @@ HEADER = {
 
 
 def index(request):
-    return HttpResponse("This is bot api.")
+    return HttpResponse(ACCESS_TOKEN)
 
 
 def callback(request):
