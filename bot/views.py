@@ -5,7 +5,7 @@ import requests
 
 from django.shortcuts import render
 from django.http import HttpResponse
-from load_words import reply_words
+from . import reply_words
 
 REPLY_ENDPOINT = 'https://api.line.me/v2/bot/message/reply'
 ACCESS_TOKEN = os.environ("LINE_ACCESS_TOKEN")
