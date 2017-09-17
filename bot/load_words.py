@@ -1,2 +1,2 @@
-reply_words = open("bot/reply_words.txt").read().split("\n")
+reply_words = open("bot/words.txt").read().split("\n")
 

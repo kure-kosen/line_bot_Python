@@ -5,7 +5,6 @@ import requests
 
 from django.shortcuts import render
 from django.http import HttpResponse
-from . import reply_words
 
 REPLY_ENDPOINT = 'https://api.line.me/v2/bot/message/reply'
 ACCESS_TOKEN = os.environ("LINE_ACCESS_TOKEN")
@@ -38,6 +37,7 @@ def callback(request):
 
 
 def make_text():
+	from . import reply_words
 	return random.choice(reply_words)
 
 
