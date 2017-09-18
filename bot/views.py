@@ -7,7 +7,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 REPLY_ENDPOINT = 'https://api.line.me/v2/bot/message/reply'
-ACCESS_TOKEN = os.getenv("LINE_ACCESS_TOKEN") #セキュリティの観点から環境変数に設定
+ACCESS_TOKEN = os.getenv("LINE_ACCESS_TOKEN") #環境変数から参照
 HEADER = {
 	"Content-Type": "application/json",
 	"Authorization": "Bearer " + ACCESS_TOKEN
