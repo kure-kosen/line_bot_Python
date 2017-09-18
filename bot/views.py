@@ -20,7 +20,7 @@ def index(request):
 
 def callback(request_json):
 	reply = ""
-	request = json.loads(request_json.body.decode('utf-8'))
+	request = json.loads(request_json.read().decode('utf-8'))
 	for e in request['events']:
 		reply_token = e['reply_Token']
 
@@ -42,11 +42,11 @@ def make_text():
 
 def reply_message(reply_token, reply):
 	reply_body = {
-          "replyToken":reply_token,
-          "messages":[
+          'replyToken':reply_token,
+          'messages':[
                 {
-                    "type":"text",
-                    "text": reply
+                    'type':"text",
+                    'text': reply
                 }
             ]
     }
