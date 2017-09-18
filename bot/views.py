@@ -7,7 +7,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 REPLY_ENDPOINT = 'https://api.line.me/v2/bot/message/reply'
-ACCESS_TOKEN = os.getenv("LINE_ACCESS_TOKEN")
+ACCESS_TOKEN = os.getenv("LINE_ACCESS_TOKEN") #セキュリティの観点から環境変数に設定
 HEADER = {
     "Content-Type": "application/json",
     "Authorization": "Bearer " + ACCESS_TOKEN
@@ -15,23 +15,22 @@ HEADER = {
 
 
 def index(request):
-    return HttpResponse(ACCESS_TOKEN)
+    return HttpResponse("It works!!")
 
 
-def callback(request):
+def callback(request_json):
 	reply = ""
-	request_json = json.loads(request.body.decode('utf-8'))
-	for e in request_json['events']:
+	request = json.loads(request_json)
+	for e in request['events']:
 		reply_token = e['reply_Token']
-		message_type = e['message']['type']
 
-		if message_type == 'text':
-			text = e['message']['text']
-			reply += make_text()
-		else:
-			reply += "今はテキストのみ返信できます"
+		if e['type'] == 'message':
+			if e['message']['type'] == 'text':
+				reply += make_text()
+			else:
+				reply += "今はテキストのみ返信できます"
 
-		reply_text(reply_token, reply)
+		reply_message(reply_token, reply)
 
 	return HttpResponse(reply)
 
@@ -41,8 +40,8 @@ def make_text():
 	return random.choice(reply_words)
 
 
-def reply_text(reply_token, reply):
-	payload = {
+def reply_message(reply_token, reply):
+	reply_body = {
           "replyToken":reply_token,
           "messages":[
                 {
@@ -52,4 +51,5 @@ def reply_text(reply_token, reply):
             ]
     }
 
-	requests.post(REPLY_ENDPOINT, headers=HEADER, data=json.dumps(payload))
+	requests.post(REPLY_ENDPOINT, headers=HEADER, body=json.dumps(reply_body))
+
