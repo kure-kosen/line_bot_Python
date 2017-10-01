@@ -43,7 +43,7 @@ def reply_message(reply_token, reply):
                 "type":"text",
                 "text": reply
             }
-            ]
+        ]
     }
-    requests.post(REPLY_ENDPOINT, headers=HEADER, body=json.dumps(reply_body))
+    requests.post(REPLY_ENDPOINT, headers=HEADER, data=reply_body)
 
