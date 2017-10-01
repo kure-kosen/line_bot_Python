@@ -6,7 +6,7 @@ Overview
 ## Install
 heroku config:set DISABLE_COLLECTSTATIC=1
 
-LINE_ACCESS_TOKEN={YOUR Channel Access Token}
+heroku config:set LINE_ACCESS_TOKEN={YOUR Channel Access Token}
 
 ## Author
 
