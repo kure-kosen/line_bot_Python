@@ -22,7 +22,6 @@ def callback(request_json):
     request = json.loads(request_json.body.decode('utf-8'))
     for e in request["events"]:
         reply_token = e["replyToken"]
-        print(reply_token)
         if e["type"] == "message":
             if e["message"]["type"] == "text":
                 reply += e["message"]["text"]
@@ -46,7 +45,6 @@ def reply_message(reply_token, reply):
             }
         ]
     }
-    print(reply_body)
-    r = requests.post(REPLY_ENDPOINT, headers=HEADER, data=reply_body)
-    print(r.status_code)
+    r = requests.post(REPLY_ENDPOINT, headers=HEADER, data=json.dumps(reply_body))
+    print(r.)
 
