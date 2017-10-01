@@ -24,7 +24,7 @@ def callback(request_json):
         reply_token = e["replyToken"]
         if e["type"] == "message":
             if e["message"]["type"] == "text":
-                reply += "true but cant reply"
+                reply += e["message"]["text"]
             else:
                 reply += "only text message"
         reply_message(reply_token, reply)
