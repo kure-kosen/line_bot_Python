@@ -19,7 +19,8 @@ def index(request):
 def callback(request_json):
     reply = ""
 #    request_json = request_json_origin.body.POST["events"]
-    request = json.loads(request_json.decode('utf-8'))
+#    request = json.loads(request_json.POST.decode('utf-8'))
+    request = request_json.POST
     for e in request["events"]:
         reply_token = e["replyToken"]
         if e["type"] == "message":
