@@ -27,7 +27,7 @@ def callback(request_json):
                 reply += e["message"]["text"]
             else:
                 reply += "only text message"
-        reply_message(reply_token, reply)
+            reply_message(reply_token, reply)
     return HttpResponse(reply)
 
 def make_text():
