@@ -17,6 +17,7 @@ def index(request):
     return HttpResponse("It works!")
 
 def callback(request_json):
+    import pdb; pdb.set_trace()
     reply = ""
 #    request_json = request_json_origin.body.POST["events"]
     request = json.loads(request_json.body.decode('utf-8'))
