@@ -46,5 +46,6 @@ def reply_message(reply_token, reply):
         ]
     }
     r = requests.post(REPLY_ENDPOINT, headers=HEADER, data=json.dumps(reply_body))
-    print(r.)
+    print(r.text)
+    print(r.status_code)
 
