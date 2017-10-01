@@ -45,5 +45,6 @@ def reply_message(reply_token, reply):
             }
         ]
     }
-    requests.post(REPLY_ENDPOINT, headers=HEADER, data=reply_body)
+    r = requests.post(REPLY_ENDPOINT, headers=HEADER, data=reply_body)
+    print(r.status_code)
 
